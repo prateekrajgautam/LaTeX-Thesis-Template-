@@ -1,0 +1,342 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mgeek}[1994/06/01 Standard LaTeX package]
+
+\RequirePackage{tikz,xcolor,graphics,placeins}
+
+%%dont work with beamer
+%\RequirePackage{titling,imakeidx}
+%\RequirePackage{sectsty}
+
+
+\RequirePackage{amsmath,multicol,graphicx,float,tikz,eso-pic,mcode,verbatim,listings,xifthen,filecontents,amsmath,soul,array,hyphenat}
+\RequirePackage{mathtools}
+%\RequirePackage[linesnumbered,lined,ruled]{algorithm2e}
+%\RequirePackage[linesnumberedhidden,lined,ruled]{algorithm2e}
+\RequirePackage[lined,ruled]{algorithm2e}
+
+\RequirePackage[lofdepth,lotdepth]{subfig}
+\RequirePackage[dvipdfmx]{media9}
+%%LINE NUMBER
+\RequirePackage[switch,pagewise]{lineno}
+
+\RequirePackage{blindtext}
+\RequirePackage[toc,page]{appendix}
+\RequirePackage{filecontents}
+\RequirePackage{placeins}
+\RequirePackage{picins}
+\RequirePackage{enumerate}
+\RequirePackage{wrapfig}
+\RequirePackage{pdflscape}
+\RequirePackage{rotating}
+\RequirePackage{emptypage}
+\RequirePackage{ragged2e}
+%\RequirePackage[numbers]{natbib}
+%\RequirePackage{bibentry}
+\RequirePackage{usebib}
+\newbibfield{doi}
+\newbibfield{if}
+
+
+
+\newcommand{\myhl}[1]{
+\colorbox{yellow!80}{
+\noindent
+\begin{minipage}{\linewidth}
+#1
+\end{minipage}
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\nobibliography*
+%\newbibfield{summery}
+%\bibinput{\referencefilename}% enter name of bib file
+%%highlighting
+%\RequirePackage{soul}
+%\hl
+
+%% USER DEFINED MACRO STARTS
+%color
+\newcommand{\red}[1]{{\color{red}#1}}
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\newcommand{\green}[1]{{\color{green}#1}}
+
+%ref
+\newcommand{\chref}[1]{Chapter \ref{#1}}
+\newcommand{\secref}[1]{Section \ref{#1}}
+\newcommand{\figref}[1]{Figure \ref{#1}}
+\newcommand{\tabref}[1]{Table \ref{#1}}
+\newcommand{\appref}[1]{Appendix~\ref{#1}}
+
+\newcommand{\fig}[4]{\begin{figure}[tbh!]\centering
+		\includegraphics[width=#4\linewidth]{#1}\caption{#2\label{#3}}\end{figure}}
+\newcommand{\figfull}[4]{\begin{figure*}[tbh!]\centering
+		\includegraphics[width=#4\textwidth]{#1}\caption{#2\label{#3}}\end{figure*}}
+
+
+\newcommand{\eqn}[1]{\begin{equation}#1.\end{equation}}
+
+
+\newcommand{\eqnc}[1]{\begin{equation}#1,\end{equation}}
+
+
+\newcommand{\myeqnarray}[1]{\begin{align}#1.\end{align}}
+
+
+
+
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+
+
+
+%%FOR BEAMER PRESENTATION
+%%
+%% define custom color
+\RequirePackage{xcolor,usebib}
+
+
+\long\def\red #1 {\color{red}{#1}}
+\long\def\b #1 {{\textbf{#1}}}
+\long\def\it #1 {{\textit{#1}}}
+
+%if not biblatex
+%\newcommand{\citetitle}[1]{\usebibentry{#1}{title}}
+\def\citealiny #1 {\citet*{#1} in \citeyear{#1} }
+\def\citeiny #1 {\citet{#1} in \citeyear{#1} }
+\def\citey #1 {\citet{#1} \citeyear{#1} }
+\long\def\citefull #1 {\citealiny{#1} paper titled ``\citetitle{#1}''}
+\def\citeinysummery #1 {\citeiny{#1} paper titled ``\citetitle{#1}'' \usebibentry{#1}{summery} }
+
+
+
+\newcommand{\doi}[1]{\textbf{DOI:} \href{https://dx.doi.org/\usebibentry{#1}{doi}}{\usebibentry{#1}{doi}}}
+\newcommand{\pubEntry}[1]{\bibentry{#1}\hfill\ \newline\doi{#1}, \textbf{Impact Factor:} \usebibentry{#1}{if}}
+
+
+
+\newcounter{LiteratureNo}
+\setcounter{LiteratureNo}{1}
+%\stepcounter{Literatureno}
+\long\def\myLiteratureSerialNo {S.No.\ \theLiteratureNo\ \stepcounter{LiteratureNo}\ }
+
+\long\def\myframetitle #1 {\myLiteratureSerialNo \citey{#1}}
+
+\long\def\myfullcite #1 {\citet{#1}}
+
+
+%\long\def\literatureframe #1 {\begin{frame}{\citet{#1} \citeyear{#1} \emph{\usebibentry{#1}{title}}}\begin{itemize}\item \citeinyfull{#1} \pause\item \usebibentry{#1}{summery}\end{itemize}\end{frame}}
+\newcommand{\f}[2]{\begin{frame}{#1}\justifying #2 \end{frame}}
+\newcommand{\F}[2]{\begin{frame}[allowframebreaks,noframenumbering]{#1}\justifying #2 \end{frame}}
+\newcommand{\fTitle}[1]{\begin{frame}\vfill\centering\Huge{#1}\vfill\end{frame}}
+\newcommand{\fBlank}[2]{\begin{frame}[plain]{#1}#2\end{frame}}
+
+
+\long\def\literatureframe #1 {\begin{frame}{\citet{#1} \citeyear{#1} }\begin{itemize}\pause \item  #1 \end{itemize}\end{frame}}
+
+
+%\myemptyframe{frametitle}{content}
+\newcommand{\myemptyframe}[2]{\begin{frame}{#1} #2 \end{frame}}
+
+%\myfigure}{sizewidth}{figure}{caption}
+\newcommand{\myfigure}[3]{\begin{figure}\includegraphics[width=#1\textwidth]{#2}\caption{#3}\end{figure}}
+
+%\myitem{\pause\item \item}
+\newcommand{\myitem}[1]{\begin{itemize} #1 \end{itemize}}
+
+
+\newcommand{\oldLitTitle}[1]{S.No. {\theLiteratureNo} \citet{#1}\ \citeyear{#1}}
+\newcommand{\LitTitle}[1]{\cite{#1}\ \citeauthor{#1} in \citeyear{#1}}
+
+
+
+%\fLitFig{citekey}{text}{mainitem}{figure}{figurecaption}
+\newcommand{\fLitFig}[5]{\begin{frame}\frametitle{\LitTitle{#1}}
+	\framesubtitle{#2}
+	\begin{columns}[T] % align columns
+		\begin{column}{.60\textwidth}
+			\begin{itemize} #3 \end{itemize}
+		\end{column}
+		%\hfill
+		\begin{column}{.4\textwidth}
+			\begin{itemize} 
+				\item[] \begin{center}\begin{figure}\includegraphics[width=\linewidth]{#4}\small{\caption{#5}}\end{figure}\end{center} \end{itemize}
+			
+			\vfill
+		\end{column}
+	\end{columns}
+	
+	%%\tiny{\cite{#1}\ \bibentry{#1}}
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{\noindent\tiny{\cite{#1}\ \bibentry{#1}}}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+	\end{frame}
+	\stepcounter{LiteratureNo}
+}
+
+
+
+
+
+%\fLitFigOnly{citekey}{figure}{figurecaption}
+\newcommand{\fLitFigOnly}[3]{\begin{frame}{\LitTitle{#1}}
+	\begin{figure}\includegraphics[height=.55\textheight]{#2}\small{\caption{#3}}\end{figure}
+	
+	%\tiny{\cite{#1}\ \bibentry{#1}}
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{\noindent\tiny{\cite{#1}\ \bibentry{#1}}}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+	\end{frame}
+	\stepcounter{LiteratureNo}
+}
+
+
+
+
+
+
+%\fLit{citekey}{text}{mainitem}
+\newcommand{\fLit}[3]{\begin{frame}\frametitle{\LitTitle{#1}}
+	\framesubtitle{#2}
+	\begin{itemize} #3 \vfill\end{itemize}
+	%\tiny{\cite{#1}\ \bibentry{#1}}
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{\noindent\tiny{\cite{#1}\ \bibentry{#1}}}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+	\end{frame}
+	\stepcounter{LiteratureNo}
+}
+
+%\fLitWithTitle{citeKey}{\item mainitem}
+\newcommand{\fLitWithTitle}[2]{\begin{frame}\frametitle{\LitTitle{#1}}
+	\framesubtitle{\citetitle{#1}}
+	\begin{itemize} #2 \vfill\end{itemize}
+	%\tiny{\cite{#1}\ \bibentry{#1}}
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{\noindent\tiny{\cite{#1}\ \bibentry{#1}}}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+	\end{frame}
+	\stepcounter{LiteratureNo}
+}
+
+\newcommand{\FLitWithTitle}[2]{\begin{frame}[allowframebreaks,noframenumbering]\frametitle{\LitTitle{#1}}
+	\framesubtitle{\citetitle{#1}}
+	\begin{itemize} #2 \vfill\end{itemize}
+	%\tiny{\cite{#1}\ \bibentry{#1}}
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{\noindent\tiny{\cite{#1}\ \bibentry{#1}}}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+	
+	\end{frame}
+	\stepcounter{LiteratureNo}
+}
+
+
+\newcommand{\fLitFigWithTitle}[4]{\begin{frame}\frametitle{\LitTitle{#1}}
+	\framesubtitle{\citetitle{#1}}
+	\begin{columns}[T] % align columns
+		\begin{column}{.60\textwidth}
+			\begin{itemize} #2 \end{itemize}
+		\end{column}
+		%\hfill
+		\begin{column}{.4\textwidth}
+			\begin{itemize} 
+				\item[] \begin{center}\begin{figure}\includegraphics[width=\linewidth]{#3}\small{\caption{#4}}\end{figure}\end{center} \end{itemize}
+			
+			\vfill
+		\end{column}
+	\end{columns}
+	
+	%%\tiny{\cite{#1}\ \bibentry{#1}}
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{\noindent\tiny{\cite{#1}\ \bibentry{#1}}}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+	
+	\stepcounter{LiteratureNo}
+	\end{frame}}
+
+
+
+%\myintroductionframe{heading}{mainitem}{figure}{figurecaption}{footnote}
+\newcommand{\myintroductionframe}[5]{\begin{frame}{#1}
+	\begin{columns}[T] % align columns
+		\begin{column}{.60\textwidth}
+			\begin{itemize} #2 \end{itemize}
+			\vfill\end{column}
+		%\hfill
+		\begin{column}{.38\textwidth}
+			\begin{itemize} 
+				\item[] \begin{center}\begin{figure}\includegraphics[width=\textwidth]{#3}\small{\caption{#4}}\end{figure}\end{center}\end{itemize}
+			
+			
+		\end{column}
+	\end{columns}
+	%\tiny{#5}
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{\noindent\tiny{#5}}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+	
+	
+	\end{frame}}
+
+
+
+\newcommand{\fFig}[5]{\begin{frame}{#1}
+		\begin{columns}[T] % align columns
+			\begin{column}{.60\textwidth}
+				\begin{itemize} 
+					\item[] \begin{center}\begin{figure}\includegraphics[width=#5\textwidth]{#3}\small{\caption{#4}}\end{figure}\end{center}\end{itemize}
+			\end{column}
+			%\hfill
+			
+			\begin{column}{.38\textwidth}
+				\begin{itemize} #2 \end{itemize}
+				\vfill\end{column}
+			
+		\end{columns}
+		%\tiny{#5}
+	\end{frame}}
+
+
+
+
+\newcommand{\MP}[2]{\begin{minipage}[]{#1\textwidth} #2\end{minipage}}
+\newcommand{\listi}[1]{\begin{itemize}#1\end{itemize}}
+\newcommand{\listn}[1]{\begin{enumerate}#1\end{enumerate}}
+\newcommand{\listd}[1]{\begin{description}#1\end{description}}
+\newcommand{\R}[2]{\resizebox{#1\linewidth}{!}{#2}}
+\newcommand{\B}{$\bullet$\ }
+\newcommand{\I}{\item }
+\newcommand\fn[1]{%
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{\noindent\tiny{#1}}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+}

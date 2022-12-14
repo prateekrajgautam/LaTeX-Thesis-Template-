@@ -1,0 +1,22 @@
+% Thesis Conclusion
+\chapter{Conclusion and future scope\label{ch:CON}}
+%\singlespacing\minitoc\doublespacing
+\section{Conclusion}
+This chapter outlines the major contributions of this thesis and its future application.
+The thesis presented three localization schemes, name EE-LSB, EE-LBRD, and 3D-LBRD. In these three schemes single anchor node is required and target nodes are localized relative to the anchor node in polar coordinates (radial distance and direction). The anchor node transmits beacon and target nodes receive these beacons and process information individually to estimate their location. Anchor node transmits beacons using a directional antenna (DA) rotating around the $Z$ axis, and each node estimates its direction as the average of all the beacons received by the node.
+\par In EE-LSB, the radial distance is estimated using RSSI-based distance estimation. Hence, its accuracy also suffers from RSSI-based fading and attenuation. However, the scheme has advantages as its anchor node is simple to design and deploy. Further, the energy consumption at both the anchor node and the target node is the smallest of them all. The average error distance is $1.9$m in 100m$\times$100m region.
+\par In EE-LBRD, the anchor node is deployed at a certain height ($h$) above the ground plane, and the direction of DA is also changed to change its elevation angle. The nodes in this scheme averages all the elevation angles received in the beacon to estimated their elevation angle ($\theta$) relative to origin and anchor node. Here, $\theta$ and $h$ are used to estimate the radial distance of the node from the origin. The accuracy of this scheme is better than EE-LSB and independent of RSSI estimations. The average error distance is $1.5$m in 100m$\times$100m region. However, it is suitable for nodes lying on the 2D plane with no variation in the $z$ component of the node. In the case of a real scenario, there is variation in the height of the node due to creeks and crest in the ground. Therefore, a 3D localization is desired if the height of the node is required.
+\par In 3D-LBRD, the anchor node employs two directional antennas placed at different heights, the nodes are estimated in 2D using EE-LBRD, and the variation in estimation is used to detect $z$ component of the node and apply correction in radial distance due to variation in the height of node (above or below ground). The scheme is independent of RSSI estimation and is suitable for a real 3D environment. The average error distance is $1.2$m in 100m$\times$100m$\times$20m 3D region. The energy efficiency of localization is improved because of improved accuracy in 3D localization. An industrial application is also proposed to monitor industrial inventory using the 3D location of floating sensors in storage tanks.
+%\par in AOALwAA is accurate energy efficient AoA bases scheme capable of localizing targets without the need for the antenna array or the need for narrow beam directional antennas at anchor nodes. It requires two anchor nodes to localize the target node (given target node in nonlinear with two anchor nodes).
+\par All the schemes are verified using MATLAB simulations, and 3D-LBRD % and AOALwAA are%
+is also validated experimentally using hardware setup. CST Studio Suite SE is used to design directional antenna using circular conducting cavity structure to attain a directivity of $9.41$ at beamwidth of $60^\circ$. The directional antenna design is also tested with a physical cavity and two different transmitting modules, NRF24L01 and ESP01.
+
+\section{Future scope}
+In the proposed schemes nodes do not communicate with other nodes. In the future, intercommunication among nodes can be used to obtain distances and connectivity in the network to further optimize the estimated location to reduce localization error.
+
+
+
+
+
+
+

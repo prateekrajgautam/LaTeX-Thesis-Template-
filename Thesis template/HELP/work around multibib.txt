@@ -1,0 +1,32 @@
+The script provided in the multibib documentation is Unix-based, so we will have troubles running it in Windows. In the script, there's also another command running inside single quotes - basename $file .aux - which returns the full path for $file (which is the current element in the for loop).
+
+The solution is to manually run these commands in the following order:
+
+pdflatex mydoc
+bibtex mydoc
+bibtex sec
+pdflatex mydoc
+pdflatex mydoc
+
+As Mico suggested in the comments, you can also create a Windows-equivalent batch file. It's been a while since my last Windows batch file, but I'm almost sure we can use this one:
+
+@echo off
+FOR %%A IN (*.aux) DO bibtex %%A
+
+Save it as myscript.bat. It will run bibtex on all .aux files in the current directory. Now, I think TeXworks might not run the batch file in the current directory, so we need to change things a little:
+
+@echo off
+FOR %%A IN (*.aux) DO bibtex %1\%%A
+
+and then make TeXworks call myscript.bat with $directory as argument (note that $directory is a TeXworks variable which expands to the absolute path to the directory containing your root document).
+
+Another suggestion (and sorry for tooting my own horn here) is to use arara to automate your document compilation. The header would be:
+
+% arara: pdflatex
+% arara: bibtex: { files: [ mydoc, sec ] }
+% arara: pdflatex
+% arara: pdflatex
+\documentclass{report}
+...
+
+The secret here is the second line containing the bibtex directive. arara will run bibtex on mydoc (your document name), and also on sec.

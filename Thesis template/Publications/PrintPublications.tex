@@ -1,0 +1,129 @@
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage{filecontents,fullpage}
+\usepackage{etoolbox}
+\patchcmd{\thebibliography}{\section*{\refname}}{{\LARGE{\textbf{List of publications}}}}{}{}
+\begin{filecontents}{\jobname .bib}
+
+@article{gautam2019energy,
+  title={Energy-Efficient Localization of Sensor Nodes in WSNs using Beacons from Rotating Directional Antenna},
+  author={Gautam, Prateek Raj and Kumar, Sunil and Verma, Akshay and Rashid, Tarique and Kumar, Arvind},
+  journal={IEEE Transactions on Industrial Informatics},
+  year={2019},
+  publisher={IEEE}
+}
+
+@article{verma2019cost,
+  title={Cost and Sub-Epoch Based Stable Energy-Efficient Clustering Algorithm for Heterogeneous Wireless Sensor Networks},
+  author={Verma, Akshay and Rashid, Tarique and Gautam, Prateek Raj and Kumar, Sunil and Kumar, Arvind},
+  journal={Wireless Personal Communications},
+  pages={1--15},
+  year={2019},
+  publisher={Springer US}
+}
+
+@article{yadav2017modern,
+  title={Modern fisher--yates shuffling based random interleaver design for scfdma-idma systems},
+  author={Yadav, Manish and Gautam, Prateek Raj and Shokeen, Vinod and Singhal, Pramod Kumar},
+  journal={Wireless Personal Communications},
+  volume={97},
+  number={1},
+  pages={63--73},
+  year={2017},
+  publisher={Springer US}
+}
+
+
+@article{kumar2018etdcc,
+  title={ETDCC: Energy-Efficient Transmission Scheme for Dynamic Climatic Conditions in WSN},
+  author={Kumar, Sunil and Gautam, Prateek Raj and Rashid, Tarique and Verma, Akshay and Kumar, Arvind},
+  journal={TELKOMNIKA (Telecommunication Computing Electronics and Control)},
+  volume={16},
+  number={3},
+  pages={1126--1134},
+  year={2018}
+}
+
+@article{rashid2018pm,
+  title={Pm-EEMRP: postural movement based energy efficient multi-hop routing protocol for intra wireless body sensor network (Intra-WBSN)},
+  author={Rashid, Tarique and Kumar, Sunil and Verma, Akshay and Gautam, Prateek Raj and Kumar, Arvind},
+  journal={TELKOMNIKA},
+  volume={16},
+  number={1},
+  pages={166--173},
+  year={2018},
+  publisher={Ahmad Dahlan University}
+}
+
+
+@inproceedings{kumar2018load,
+  title={The Load Balancing of Optimizing LEACH Clustering Algorithm with Mobile Sink and Rendezvous Nodes},
+  author={Kumar, Sunil and Verma, Akshay and Gautam, Prateek Rai and Dayal, Akash and Kumar, Arvind},
+  booktitle={2018 5th IEEE Uttar Pradesh Section International Conference on Electrical, Electronics and Computer Engineering (UPCON)},
+  pages={1--6},
+  year={2018},
+  organization={IEEE}
+}
+
+@incollection{kumar2019performance,
+  title={Performance Evaluation of Multi-operands Floating-Point Adder},
+  author={Kumar, Arvind and Kumar, Sunil and Gautam, Prateek Raj and Verma, Akshay and Rashid, Tarique},
+  booktitle={Recent Trends in Communication, Computing, and Electronics},
+  pages={537--546},
+  year={2019},
+  publisher={Springer}
+}
+
+
+
+@article{royqrs,
+  title={QRS COMPLEX DETECTION AND FILTERING OF ECG SIGNAL USING WAVELET TRANSFORM},
+  author={Roy, Saurav and Gautam, Prateek Raj and Yadav, Manish},
+  journal={International Journal of Computer Engineering and Applications},
+  volume={X},
+  issue={VI},
+  month={march},
+  ISSN={2321-3469},
+year={2017}
+}
+
+
+
+@article{singh2energy,
+  title={Energy Efficient Design of Multiplexer Using Adiabatic logic},
+  author={Singh, Richa and Gautam, Prateek Raj and Sharma, Anjali},
+  journal={Int. Journal of Electrical \& Electronics Engg},
+  volume={2},
+  pages={104--107},
+  year={2014}
+}
+
+@article{verma2017fuzzy,
+  title={Fuzzy based Stable Clustering Protocol forHeterogeneous Wireless Sensor Networks},
+  author={Verma, Akshay and Rashid, Tarique and Gautam, Prateek Raj and Kumar, Sunil and Kumar, Arvind},
+  journal={International Journal of Engineering \& Technology},
+  volume={9},
+  number={4},
+  pages={2854--2860},
+  year={2017}
+}
+
+
+
+
+@article{rashidrb,
+  title={RB-IEMRP: RELAY BASED IMPROVED THROUGHPUT ENERGY-EFFICIENT MULTI-HOP ROUTING PROTOCOL FOR INTRA BODY SENSOR NETWORK (INTRA-WBSN)},
+  author={Rashid, Tarique and Kumar, Sunil and Verma, Akshay and Gautam, Prateek Raj and Kumar, Arvind},
+journal={International Journal of Computer Networks \& Communications (IJCNC)},
+year={2019},
+volume={11},
+number={2}
+}
+
+
+\end{filecontents}
+\begin{document}
+\nocite{*}
+\bibliographystyle{IEEEtran}
+\bibliography{\jobname .bib}
+\end{document}
