@@ -10,6 +10,8 @@ How to compile will all components
 
 create a bash script like below
 
+### On linux
+
 ```bash
 #!/bin/bash
 pdflatex $1 $2 $3
@@ -34,11 +36,31 @@ pdflatex $1 $2 $3
 
 ```
 
+### On windows
+
+```bat
+
+pdflatex %1 %2 %3
+# bibtex %2
+biber %2
+makeindex %2
+makeglossaries %2
+pdflatex %1 %2 %3
+pdflatex %1 %2 %3
+
+```
+
+
+
 # All compiler in texworks
 
 save Above script as executible
 
 > In texwork> file> preference > Typesetting >Processing tools
+
+
+![](./How%20to%20Configure%20Texworks%20option%20PdfLaTeX%2BMakeIndex%2BBibTex%20compile/step1.png)
+
 
 add new
 
@@ -53,3 +75,4 @@ $fullname
 $basename
 
 $synctexoption
+![](./How%20to%20Configure%20Texworks%20option%20PdfLaTeX%2BMakeIndex%2BBibTex%20compile/step2.png)
